@@ -1,0 +1,19 @@
+{
+  "name": "celesta-exoplanet-ensemble-visualizer",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "build": "esbuild src/main.jsx --bundle --minify --sourcemap --jsx=automatic --outfile=assets/main.js",
+    "verify:data": "node scripts/verify.mjs",
+    "check": "npm run build && npm run verify:data"
+  },
+  "dependencies": {
+    "gsap": "3.13.0",
+    "react": "19.1.1",
+    "react-dom": "19.1.1"
+  },
+  "devDependencies": {
+    "esbuild": "0.25.6"
+  }
+}
