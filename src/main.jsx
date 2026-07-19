@@ -5,11 +5,11 @@ import traceData from "../data/model-traces.json";
 
 const CLASS_ORDER = traceData.meta.classOrder;
 const CLASS_COLORS = {
-  CANDIDATE: "#bfd66f",
+  CANDIDATE: "#c9e66f",
   CONFIRMED: "#7fb28c",
-  "FALSE POSITIVE": "#ef8457",
+  "FALSE POSITIVE": "#f18d59",
 };
-const MODEL_COLORS = { lightgbm: "#83b477", catboost: "#e49a4f" };
+const MODEL_COLORS = { lightgbm: "#6cad68", catboost: "#ee9b4a" };
 const EMBEDDED = new URLSearchParams(window.location.search).has("embed");
 const STEPS = [
   { at: 0, label: "Observation", title: "A KOI becomes one structured measurement field.", note: "The models see numbers describing a transit-like signal and its host star—not an image of a planet." },
@@ -104,7 +104,7 @@ function drawTrace(canvas, trace, progress) {
     const isMissing = kept && i < trace.input.missingFeatureCount;
     ctx.globalAlpha = kept ? 0.25 + (1 - gateP) * 0.55 : (1 - gateP) * 0.52;
     ctx.beginPath(); ctx.arc(x, y, kept ? 2.1 : 1.7, 0, Math.PI * 2);
-    if (isMissing) { ctx.strokeStyle = "#f4f0e6"; ctx.stroke(); } else { ctx.fillStyle = kept ? "#bfd66f" : "#ef8457"; ctx.fill(); }
+    if (isMissing) { ctx.strokeStyle = "#f4f0e6"; ctx.stroke(); } else { ctx.fillStyle = kept ? "#c9e66f" : "#f18d59"; ctx.fill(); }
   }
   ctx.globalAlpha = 1;
 
@@ -124,7 +124,7 @@ function drawTrace(canvas, trace, progress) {
   }
   const gradient = ctx.createRadialGradient(0, 0, 0, 0, 0, radius);
   gradient.addColorStop(0, resultP > 0.05 ? chosenColor : "#f4f0e6");
-  gradient.addColorStop(0.35, resultP > 0.05 ? `${chosenColor}aa` : "#bfd66faa");
+  gradient.addColorStop(0.35, resultP > 0.05 ? `${chosenColor}aa` : "#c9e66faa");
   gradient.addColorStop(1, "rgba(21,32,25,0)");
   ctx.fillStyle = gradient;
   ctx.beginPath(); ctx.arc(0, 0, radius, 0, Math.PI * 2); ctx.fill();

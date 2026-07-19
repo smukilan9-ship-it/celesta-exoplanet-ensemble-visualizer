@@ -2,10 +2,10 @@
   --ink: #152019;
   --paper: #f4f0e6;
   --paper-2: #e7e5d8;
-  --lime: #bfd66f;
-  --blue: #83b477;
-  --coral: #ef8457;
-  --orange: #e49a4f;
+  --lime: #c9e66f;
+  --blue: #6cad68;
+  --coral: #f18d59;
+  --orange: #ee9b4a;
   --white: #fffdf7;
   --muted: #657064;
   --line: rgba(21, 32, 25, 0.2);
@@ -179,4 +179,30 @@ button, select { cursor: pointer; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
+}
+
+/* Color-guided controls make the walkthrough easier to scan without overpowering it. */
+:root {
+  --glow-green: rgba(108, 173, 104, .3);
+  --glow-orange: rgba(238, 155, 74, .28);
+}
+
+.play-controls button:hover,
+.play-controls button:focus-visible,
+.step-rail button:hover,
+.step-rail button:focus-visible,
+.measurement-orbit button:hover,
+.measurement-orbit button:focus-visible {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px var(--glow-green), 0 10px 24px rgba(23, 32, 25, .12);
+}
+
+.play-controls button:nth-child(even):hover,
+.play-controls button:nth-child(even):focus-visible,
+.step-rail button:nth-child(even):hover,
+.step-rail button:nth-child(even):focus-visible,
+.measurement-orbit button:nth-child(even):hover,
+.measurement-orbit button:nth-child(even):focus-visible {
+  border-color: var(--orange);
+  box-shadow: 0 0 0 3px var(--glow-orange), 0 10px 24px rgba(23, 32, 25, .12);
 }
